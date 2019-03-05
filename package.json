@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "nodemon ./server/index.js",
-    "build": "webpack -d --watch"
+    "build": "webpack -d"
   },
   "dependencies": {
     "@babel/core": "^7.2.2",
@@ -19,9 +19,13 @@
     "css-loader": "^2.1.0",
     "express": "^4.16.4",
     "file-loader": "^3.0.1",
+    "file-system": "^2.2.2",
+    "increase-memory-limit": "^1.0.6",
     "mongoose": "^5.4.10",
+    "node-run-cmd": "^1.0.1",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
+    "stream": "0.0.2",
     "style-loader": "^0.23.1"
   },
   "devDependencies": {

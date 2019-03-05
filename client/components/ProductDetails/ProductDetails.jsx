@@ -14,7 +14,7 @@ class ProductDetails extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/productDetails').then(({ data }) => {
+    axios.get('/productDetails/15').then(({ data }) => {
       this.setState({
         product: data
       });

@@ -29,3 +29,9 @@ data/
 # Planning
 component-breakdown.png
 
+# data files
+data.json
+data.csv
+productData.csv
+mediaData.csv
+*.csv

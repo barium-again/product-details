@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const connectToMongo = () => {
   mongoose
-    .connect('mongodb://mongo/sephora')
+  //.connect('mongodb://mongo/sephora')
+    .connect('mongodb://localhost/sephora')
     .then(() => console.log('connection to mongo successful'))
     .catch(() => {
       console.log('connection to mongo unsuccessful');
@@ -36,8 +37,13 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model('product', productSchema);
 
 Product.find().then(data => {
-  if (data.length === 0) {
-    require('./dataGenerator');
-  }
+
+  /*
+   *mongoose.connection.collections['products'].drop( function(err) {
+   *  console.log('collection dropped');
+   *});
+   */
+  require('./dataGenerator');
+
 });
-module.exports = { Product, mongoose };
+module.exports = { Product, mongoose, connectToMongo };
