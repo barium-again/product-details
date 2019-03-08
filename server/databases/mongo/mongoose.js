@@ -1,3 +1,5 @@
+// not using ORM mongoose anymore, look at queries.js for db connection
+
 const mongoose = require('mongoose');
 
 const connectToMongo = () => {
@@ -31,7 +33,7 @@ const productSchema = new mongoose.Schema({
   average_rating: Number,
   review_count: Number,
   loves_count: Number,
-  media: [Object]
+  media: [String]
 });
 
 const Product = mongoose.model('product', productSchema);

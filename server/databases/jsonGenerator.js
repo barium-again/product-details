@@ -1,7 +1,7 @@
 const fs = require('file-system');
 const cmd = require('node-run-cmd');
-const { Writable, Readable } = require('stream');
-const { connectToMongo } = require('./index.js');
+const { Readable } = require('stream');
+// const { connectToMongo } = require('./index.js');
 
 const faker = require('faker');
 const amount = 1e7;
@@ -37,11 +37,11 @@ const inStream = new Readable({
       newProduct.size = faker.lorem.word();
       newProduct.item_number = randInt(10000000, 99999999);
       newProduct.price = faker.commerce.price();
-      newProduct.details = faker.lorem.paragraphs();
-      newProduct.how_to_use = faker.lorem.paragraphs();
-      newProduct.ingredients = faker.lorem.paragraphs();
-      newProduct.about_the_brand = faker.lorem.paragraphs();
-      newProduct.shipping_returns = faker.lorem.paragraphs();
+      newProduct.details = faker.lorem.paragraph();
+      newProduct.how_to_use = faker.lorem.paragraphs(2, ' ');
+      newProduct.ingredients = faker.lorem.paragraph();
+      newProduct.about_the_brand = faker.lorem.paragraph();
+      newProduct.shipping_returns = faker.lorem.paragraph();
       newProduct.exclusive = faker.random.boolean();
       newProduct.average_rating = Math.random() * 5;
       newProduct.review_count = randInt(0, 5000);
@@ -49,11 +49,8 @@ const inStream = new Readable({
       newProduct.media = [];
       let imageCount = randInt(1, 5);
       for (let i = 0; i < imageCount; i++) {
-        let mediaObj = {};
-        mediaObj.type = 'image';
-        mediaObj.url = `https://picsum.photos/1920?image=${imageCounter}`;
-        imageCounter++;
-        newProduct.media.push(mediaObj);
+        let url = `https://picsum.photos/1920?image=${imageCounter}`;
+        newProduct.media.push(url);
       }
       // const videoCount = randInt(0, 3);
       // for (let i = 0; i < videoCount; i++) {
@@ -72,13 +69,14 @@ const inStream = new Readable({
         objString = objString + ',';
       }
       this.push(objString + '\n');
-      if (count % 10000 === 0) {
-        console.log(count, 'created');
+      if (count % 100000 === 0) {
+        console.log((count / amount * 100) + '%');
       }
     count += 1;
     if (count === amount) {
       this.push(']');
       this.push(null);
+      console.log('data generation complete');
     }
   }
 });
@@ -94,8 +92,9 @@ let file = fs.createWriteStream('./data.json');
 inStream.pipe(file);
 
 
-connectToMongo();
-console.log('importing to mongo');
-cmd.run('mongoimport --host localhost --db sephora --collection products --file ./data.file --jsonArray');
-
-console.log('data generation complete');
+/*
+ *connectToMongo();
+ *console.log('importing to mongo');
+ *cmd.run('mongoimport --host localhost --db sephora --collection products --file ./data.file --jsonArray');
+ *
+ */

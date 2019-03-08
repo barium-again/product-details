@@ -4,7 +4,6 @@ const morgan = require('morgan');
 const parser = require('body-parser');
 const path = require('path');
 
-const { Product } = require('./databases/index');
 
 const PORT = process.env.PORT || 3002;
 
@@ -17,9 +16,13 @@ app.use(parser.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, '../public')));
 
-app.get('/productDetails/:id', (req, res) => {
-  Product.findOne({ id: req.params.id }).then(product => {
-    res.status(200).json(product);
-  });
-});
+// mongo
+const { getProductById, addProduct, updateProduct, deleteProduct, db } = require('./databases/mongo/queries.js');
+// postgres
+// const { getProductById, addProduct, updateProduct, deleteProduct } = require('./databases/postgres/queries.js');
+app.get('/productDetails/:id', getProductById);
+app.post('/productDetails', addProduct);
+app.put('/productDetails', updateProduct);
+app.delete('/productDetails/:id', deleteProduct);
+
 app.listen(PORT, () => console.log(`server is listening on PORT: ${PORT}`));
