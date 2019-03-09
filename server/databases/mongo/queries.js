@@ -12,7 +12,7 @@ MongoClient
       //setTimeout(connectToMongo, 1000);
     } else {
       console.log('connection to mongo successful');
-      db = database;
+      db = database.db('sephora').collection('products');
     }
   });
 
@@ -20,7 +20,7 @@ MongoClient
 //
 module.exports = {
   getProductById: (req, res) => {
-    db.db('sephora').collection('products').findOne({id: Number(req.params.id)}, (err, product) => {
+    db.findOne({id: Number(req.params.id)}, (err, product) => {
       if (product) {
         res.status(200).send(product);
       } else {
@@ -30,6 +30,7 @@ module.exports = {
   },
   addProduct: (req, res) => {
     let product = req.body;
+    
   },
   updateProduct: (req, res) => {
 
