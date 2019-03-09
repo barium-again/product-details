@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
-const url = URL; // remote db
+const url = require('./auth.js').URL; // remote db
 // const url = 'mongodb://localhost'; // local
 // const url = 'mongodb://mongo/sephora'; // for docker
 let db;

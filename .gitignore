@@ -35,3 +35,4 @@ data.csv
 productData.csv
 mediaData.csv
 *.csv
+auth.js
