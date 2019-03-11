@@ -30,7 +30,6 @@ module.exports = {
   },
   addProduct: (req, res) => {
     let product = req.body;
-    
   },
   updateProduct: (req, res) => {
 

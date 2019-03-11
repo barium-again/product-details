@@ -9,7 +9,7 @@ const connectToMongo = () => {
     .then(() => console.log('connection to mongo successful'))
     .catch(() => {
       console.log('connection to mongo unsuccessful');
-      setTimeout(connectToMongo, 1000);
+      // setTimeout(connectToMongo, 1000);
       // process.exit();
     });
 };

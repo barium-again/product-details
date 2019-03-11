@@ -15,6 +15,13 @@ class ProductDetails extends React.Component {
 
   componentDidMount() {
     axios.get('/productDetails/15').then(({ data }) => {
+      data.breadcrumbs = data.breadcrumbs.slice(1, -2).split(',');
+      data.media = data.media.slice(1, -2).split(',');
+      let media = [];
+      for (let item of data.media) {
+        media.push({ url: item, type: 'image' });
+      }
+      data.media = media;
       this.setState({
         product: data
       });
