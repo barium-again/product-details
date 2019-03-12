@@ -9,11 +9,11 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name: ['My Application'],
+  app_name: ['Sephora Product Details'],
   /**
    * Your New Relic license key.
    */
-  license_key: 'license key here',
+  license_key: '197dbcd1e64cd08060468770a15f1f54ba09eb61'
   logging: {
     /**
      * Level at which to log. 'trace' is most useful to New Relic when diagnosing
