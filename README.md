@@ -1,39 +1,19 @@
-# Project Name
+# System Design and DBMS Optimization
+> Reduced product details database query execution time from ​250 s to 1 ms​ through database single field indexing
 
-> Project description
+> Increased system performance capability from ​500 RPS to 2500 RPS​ ​with 0% error rate​ by implementing Nginx
+round-robin load balancing between 3 servers
+
+> Decreased average server response time to ​< 25 ms latency​ by adding a cache in front of the database
+
+## Tech Stack
+> React | Node | Express | MongoDB | PostgreSQL | Docker | Redis | NGINX | Loader.io | Amazon EC2, S3
 
 ## Related Projects
+> https://github.com/barium-again/explore-this-product
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+> https://github.com/barium-again/ratings-and-reviews
 
-## Table of Contents
+> https://github.com/barium-again/similar-products
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-
-## Usage
-
-> Some usage instructions
-
-## Requirements
-
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
-
-## Development
-
-### Installing Dependencies
-
-From within the root directory:
-
-```sh
-npm install -g webpack
-npm install
-```
 
